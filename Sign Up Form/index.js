@@ -76,41 +76,6 @@ document.getElementById("userName").addEventListener("input", function(){
     }
 });
 
-// Validating date of birth
-document.getElementById("dateOfBirth").addEventListener("change", function (event){
-    event.preventDefault();
-    console.log("Date input value:", event.target.value);
-
-    const ageError = document.getElementById("ageError");
-    const dobInput = this.value;
-    
-    // Anyone born after the year 2006 can't sign up for this app.
-    
-    if (!dobInput) {
-        ageError.style.display = "block";
-        ageError.textContent = "Date of birth is required!"
-        return;
-    }
-    const currentDate = new Date();
-    const dateOfBirth = new Date(dobInput);
-    const age = currentDate.getFullYear() - dateOfBirth.getFullYear();
-    const hasHadBirthdayThisYear = currentDate.getMonth() > dateOfBirth.getMonth() || (currentDate.getMonth() === dateOfBirth.getMonth() && currentDate.getDate() >= dateOfBirth.getDate());
-    const actualAge = hasHadBirthdayThisYear ? age : age - 1;
-    
-    if (actualAge < 18) {
-        ageError.style.display = "block";
-        ageError.textContent = "You must be at least 18 years old to sign up!"
-    } else {
-        ageError.style.display = "none";
-    }
-
-    if (ageError.style.display === "block") {
-        setTimeout(() => {
-            ageError.style.display = "none";
-        }, 2000);
-    }
-});
-
 //Email validation
 document.getElementById("email").addEventListener("input", function(){
     const emailInput = this.value;
