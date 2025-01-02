@@ -1,0 +1,194 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+} */
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* General Body Styling */
+body {
+    font-family: "Varela Round", sans-serif;
+    margin: 0;
+    padding: 20;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Form Container */
+#signUpForm {
+    border: 3px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 613px;
+    max-width: 500px;
+    margin-bottom: 0;
+    padding-top: 6px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    width: 42%;
+}
+
+.title-container{
+    margin: 18px 0 11px 17px;
+    text-align: left;
+}
+/* Title Styling */
+.title {
+    font-weight: bold;
+    font-size: 35px;
+    margin-top: 6px;
+    margin-bottom: 15px; 
+}
+
+.name-container{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+    border: 2px solid black;
+    border-radius: 2px;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus {
+    border-color: rgba(228, 41, 242, 1);
+    outline: none;
+    box-shadow: 0 0 5px rgba(228, 41, 242, 0.5);
+}
+
+p[id$="Error"] {
+    color: red;
+    font-size: 14px;
+    margin: 0;
+    text-align: left;
+}
+
+input[type="date"] {
+    font-family: "Varela Round", sans-serif;
+}
+
+#ageLimit {
+    color: gray;
+    font-size: 14px;
+    margin-top: -5px;
+}
+
+/* Radio Button Styling */
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+label {
+    font-size: 15px;
+    margin-bottom: -2px;
+}
+
+/* Button Styling */
+button[type="submit"] {
+    background-color: rgba(228, 41, 242, 1);
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-family: "Varela Round", sans-serif;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100px;
+    align-self: center;
+}
+
+button[type="submit"]:hover {
+    background-color: rgba(246, 128, 226, 1);
+}
+
+button[type="submit"] {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+button[type="submit"]:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Responsive Design  */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+        max-width: 400px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    #signUpForm {
+        padding: 15px;
+        width: 100%;
+    }
+    }
+    
+}
