@@ -12,6 +12,7 @@
 alert("This is just a practice javascript form.");
 
 document.getElementById("fName").addEventListener("input",function(event){
+    console.log('The first name input event was triggered.');
     const fNameInput = event.target.value;
     const fNameError = document.getElementById("firstNameError");
 
@@ -34,6 +35,7 @@ document.getElementById("fName").addEventListener("input",function(event){
 
 //Validating Last Name
 document.getElementById("lName").addEventListener("input", function(event){
+    console.log('The last name input event was triggered.');
     const lNameInput = event.target.value;
     const lNameError = document.getElementById("lastNameError");
     
@@ -54,30 +56,9 @@ document.getElementById("lName").addEventListener("input", function(event){
     }
 });
 
-// Validate username
-document.getElementById("userName").addEventListener("input", function(){
-    const username = this.value.trim();
-    const error = document.getElementById("userNameError");
-
-    if(!username){
-        error.style.display= "block";
-        error.textContent = "Username is required!";
-        error.style.fontSize = "16px";
-    } else if (username.length < 8) {
-        error.style.display="block";
-        error.style.fontSize = "16px";
-        error.textContent = "Too short! Must be at least 8 characters!";
-    } else if (username.length > 12) {
-        error.style.display = "block";
-        error.style.fontSize = "16px";
-        error.textContent = "Maximun of 12 characters allowed!";
-    } else {
-        error.style.display = "none";
-    }
-});
-
 //Email validation
 document.getElementById("email").addEventListener("input", function(){
+    console.log('The email input event was triggered.');
     const emailInput = this.value;
     const emailError = document.getElementById("emailError");
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -94,7 +75,7 @@ document.getElementById("email").addEventListener("input", function(){
         //Check for valid domains 
         if (!validDomains.includes(domain)) {
             emailError.style.display = "block";
-            emailError.textContent = `The domain "${domain}" is not allowed. Use: ${validDomains.join(", ")}`;
+            emailError.textContent = `The domain "${domain}" is not allowed. Please use a valid email.`;
             //Checking for local part of the email
         } else if (localPart.length < 5 || /^[0-9]+$/.test(localPart)){
             emailError.style.display = "block";
@@ -115,6 +96,7 @@ const ruleNumber = document.getElementById('ruleNumber');
 const ruleSpecial = document.getElementById('ruleSpecial');
 
 passwordValidation.addEventListener("input", function(){
+    console.log('The password input event was triggered.');
     const passwordInput = this.value;
     const passwordError = document.getElementById('passwordError');
 
@@ -145,19 +127,29 @@ passwordValidation.addEventListener("input", function(){
     // Rule checks and if valid, removes from the list.
     if (!passwordInput.length >= 8) {
         ruleLength.style.display = "block";
+    } else {
+        ruleLength.style.display = "none";
     }
     if (!/[A-Z]/.test(passwordInput)) {
         ruleUppercase.style.display = "block";
+    } else {
+        ruleUppercase.style.display = "none";
     }
     if (!/[a-z]/.test(passwordInput)) {
         ruleLowercase.style.display = "block";
+    } else {
+        ruleLowercase.style.display = "none";
     }
     if (!/[0-9]/.test(passwordInput)) {
         ruleNumber.style.display = "block";
+    } else {
+        ruleNumber.style.display = "none";
     }
     if (!/[!@#$%^&*(),.?":{}|<>]/.test(passwordInput)) {
         ruleSpecial.style.display = "block";
-    } 
+    } else {
+        ruleSpecial.style.display = "none";
+    }
 
     // If all rules are satisfied, hide the error message
     if (passwordInput.length >= 8 && /[A-Z]/.test(passwordInput) && /[a-z]/.test(passwordInput) && /[0-9]/.test(passwordInput) && /[!@#$%^&*(),.?":{}|<>]/.test(passwordInput)) {
