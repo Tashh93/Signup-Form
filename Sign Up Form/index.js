@@ -13,7 +13,7 @@ alert("This is just a practice javascript form.");
 
 document.getElementById("fName").addEventListener("input",function(event){
     console.log('The first name input event was triggered.');
-    const fNameInput = event.target.value;
+    const fNameInput = event.target.value.trim();
     const fNameError = document.getElementById("firstNameError");
 
     if(!fNameInput){
@@ -23,20 +23,16 @@ document.getElementById("fName").addEventListener("input",function(event){
         fNameError.style.display = "block";
         fNameError.textContent = "Please enter a real first name!"
     }  else {
-        fNameError.style.display = "none";
+        fNameError.style.display = "block";
+        fNameError.textContent = "Looks Good!";
     }
-
-    if (fNameError.style.display === "block") {
-        setTimeout(() => {
-            fNameError.style.display = "none";
-        }, 2000);
-    }
+        
 });
 
 //Validating Last Name
 document.getElementById("lName").addEventListener("input", function(event){
     console.log('The last name input event was triggered.');
-    const lNameInput = event.target.value;
+    const lNameInput = event.target.value.trim();
     const lNameError = document.getElementById("lastNameError");
     
     if(!lNameInput){
@@ -48,12 +44,7 @@ document.getElementById("lName").addEventListener("input", function(event){
     } else {
         lNameError.style.display = "none";
     }
-
-    if (lNameError.style.display === "block") {
-        setTimeout(() => {
-            lNameError.style.display = "none";
-        }, 2000);
-    }
+    
 });
 
 //Email validation
@@ -94,15 +85,16 @@ const ruleUppercase = document.getElementById('ruleUppercase');
 const ruleLowercase = document.getElementById('ruleLowercase');
 const ruleNumber = document.getElementById('ruleNumber');
 const ruleSpecial = document.getElementById('ruleSpecial');
+const confirmPassword = document.getElementById("confirmPassword");
+const confirmationError = document.getElementById("confirmationError");
 
 passwordValidation.addEventListener("input", function(){
     console.log('The password input event was triggered.');
-    const passwordInput = this.value;
+    const passwordInput = passwordValidation.value.trim();
     const passwordError = document.getElementById('passwordError');
 
     //Reset Errors
     passwordError.style.display = "none";
-    ruleLength.style.color = "";
 
     //Check for empty input
     if (!passwordInput){
@@ -118,45 +110,75 @@ passwordValidation.addEventListener("input", function(){
         return;
     } else if (passwordInput.length > 12){
         passwordError.style.display = "block";
-        passwordError.style.display = "Password cannot exceed 12 characters!";
+        passwordError.textContent = "Password cannot exceed 12 characters!";
         return;
     } else {
         passwordError.style.display = "none";
     }
+
     
     // Rule checks and if valid, removes from the list.
-    if (!passwordInput.length >= 8) {
+    if (passwordInput.length > 8) {
         ruleLength.style.display = "block";
     } else {
         ruleLength.style.display = "none";
     }
     if (!/[A-Z]/.test(passwordInput)) {
-        ruleUppercase.style.display = "block";
-    } else {
         ruleUppercase.style.display = "none";
+    } else {
+        ruleUppercase.style.display = "block";
     }
     if (!/[a-z]/.test(passwordInput)) {
-        ruleLowercase.style.display = "block";
-    } else {
         ruleLowercase.style.display = "none";
+    } else {
+        ruleLowercase.style.display = "block";
     }
     if (!/[0-9]/.test(passwordInput)) {
-        ruleNumber.style.display = "block";
-    } else {
         ruleNumber.style.display = "none";
+    } else {
+        ruleNumber.style.display = "block";
     }
     if (!/[!@#$%^&*(),.?":{}|<>]/.test(passwordInput)) {
-        ruleSpecial.style.display = "block";
-    } else {
         ruleSpecial.style.display = "none";
+    } else {
+        ruleSpecial.style.display = "block";
     }
+s
+// Password Confirmation Validation
+confirmPassword.addEventListener("input", function (){
+    console.log('The confirm password input event was triggered.');
+    const confirmPasswordValue = confirmPassword.value.trim();
+    const passwordValue = passwordInput.value; 
 
-    // If all rules are satisfied, hide the error message
-    if (passwordInput.length >= 8 && /[A-Z]/.test(passwordInput) && /[a-z]/.test(passwordInput) && /[0-9]/.test(passwordInput) && /[!@#$%^&*(),.?":{}|<>]/.test(passwordInput)) {
-        passwordError.style.display = "none";  // Hide error if all conditions are met
+    if(!confirmPasswordValue){
+        confirmationError.style.display = "block"
+        confirmationError.textContent = "Cannot leave empty! Please re-enter your password!"
+        confirmPassword.style.color = "";
+        return;
+    } else if(confirmPasswordValue !== passwordInput){
+        confirmationError.style.display = "block";
+        confirmationError.textContent = "Passwords do not match! Try again.";
+        confirmationError.style.color = "";
+    } else {
+        confirmationError.style.display = "none";
+        confirmPassword.style.color = "green"; 
     }
 });
-    
+
+});
+
+// Submit button event
+const submitButton = document.getElementById("submitButton");
+const form = document.getElementById("signUpForm");
+
+form.addEventListener("submit", function(event){
+    event.preventDefault();
+    console.log("The form was submitted!");
+
+    alert("Your form was successfully saved! Thank you for your support!");
+})
+
+
 
 
 

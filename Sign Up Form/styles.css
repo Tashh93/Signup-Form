@@ -127,7 +127,8 @@ body {
 }
 
 ul, ol {
-    margin-top: 8px;
+    margin-top: 14px;
+    margin-bottom: 5px;
 }
 
 /* Input Fields */
@@ -137,6 +138,7 @@ input[type="password"] {
     border-width: 0 2px 2px 2px;
     border-radius: 0 2 2px 2px 2px;
     border-color: brown;
+    border: none;
     padding: 17px;
     text-align: center;
     width: 100%;
@@ -148,15 +150,16 @@ input[type="password"] {
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
-    border-color: rgb(184, 184, 255);
+    border-color: rgb(247, 148, 109);
     outline: none;
-    box-shadow: 0 0 5px rgba(69, 3, 252, 0.5);
+    box-shadow: 0 0 10px rgb(252, 94, 3);
 }
 
 p[id$="Error"] {
     color: red;
     font-size: 14px;
     margin: 0;
+    margin-top: 9px;
     text-align: left;
 }
 
