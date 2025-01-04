@@ -23,8 +23,7 @@ document.getElementById("fName").addEventListener("input",function(event){
         fNameError.style.display = "block";
         fNameError.textContent = "Please enter a real first name!"
     }  else {
-        fNameError.style.display = "block";
-        fNameError.textContent = "Looks Good!";
+        fNameError.style.display = "none";
     }
         
 });
@@ -92,9 +91,15 @@ passwordValidation.addEventListener("input", function(){
     console.log('The password input event was triggered.');
     const passwordInput = passwordValidation.value.trim();
     const passwordError = document.getElementById('passwordError');
-
-    //Reset Errors
+    const passwordMaxLength = 8;
+   
+    // Reset all rules//  
     passwordError.style.display = "none";
+    ruleLength.style.display = "block";
+    ruleUppercase.style.display = "block";
+    ruleLowercase.style.display = "block";
+    ruleNumber.style.display = "block";
+    ruleSpecial.style.display = "block";
 
     //Check for empty input
     if (!passwordInput){
@@ -104,46 +109,43 @@ passwordValidation.addEventListener("input", function(){
     } 
     
     //checking for password length
-    if (passwordInput.length < 8){
-        passwordError.style.display = "block";
+    if (passwordInput.length < passwordMaxLength){
+        ruleLength.style.display = "block";
         passwordError.textContent = "Password must be at least 8 characters!";
         return;
-    } else if (passwordInput.length > 12){
-        passwordError.style.display = "block";
-        passwordError.textContent = "Password cannot exceed 12 characters!";
-        return;
-    } else {
-        passwordError.style.display = "none";
-    }
-
-    
-    // Rule checks and if valid, removes from the list.
-    if (passwordInput.length > 8) {
-        ruleLength.style.display = "block";
     } else {
         ruleLength.style.display = "none";
     }
+
+
+    // Rule checks and if valid, removes from the list.
     if (!/[A-Z]/.test(passwordInput)) {
-        ruleUppercase.style.display = "none";
-    } else {
         ruleUppercase.style.display = "block";
+        ruleUppercase.style.color = "red";
+    } else {
+        ruleUppercase.style.color = "green";
     }
     if (!/[a-z]/.test(passwordInput)) {
-        ruleLowercase.style.display = "none";
-    } else {
         ruleLowercase.style.display = "block";
+        ruleLowercase.style.color = "red";
+    } else {
+        ruleLowercase.style.color = "green";
     }
     if (!/[0-9]/.test(passwordInput)) {
-        ruleNumber.style.display = "none";
-    } else {
         ruleNumber.style.display = "block";
+        ruleNumber.style.color = "red";
+    } else {
+        ruleNumber.style.color = "green";
     }
     if (!/[!@#$%^&*(),.?":{}|<>]/.test(passwordInput)) {
-        ruleSpecial.style.display = "none";
-    } else {
         ruleSpecial.style.display = "block";
+        ruleSpecial.style.color = "red";
+    } else {
+        ruleSpecial.style.color = "green";
     }
-s
+
+
+
 // Password Confirmation Validation
 confirmPassword.addEventListener("input", function (){
     console.log('The confirm password input event was triggered.');
@@ -158,10 +160,8 @@ confirmPassword.addEventListener("input", function (){
     } else if(confirmPasswordValue !== passwordInput){
         confirmationError.style.display = "block";
         confirmationError.textContent = "Passwords do not match! Try again.";
-        confirmationError.style.color = "";
     } else {
         confirmationError.style.display = "none";
-        confirmPassword.style.color = "green"; 
     }
 });
 
@@ -176,7 +176,7 @@ form.addEventListener("submit", function(event){
     console.log("The form was submitted!");
 
     alert("Your form was successfully saved! Thank you for your support!");
-})
+});
 
 
 
