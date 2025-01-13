@@ -1,13 +1,3 @@
-// We are now creating a sign up form. Lets start by figuring out what exactly do you want this app to do?
-// I want users to be able to sign up but with valid credentials.
-    // Valid First & Last Name
-    // Valid Username
-    // Valid Email Address
-    // passwords must be a minimum of 8 characters
-    // passwords must match
-    // Everything is required for sign up.
-// Now that you have everything established, now you must start working on your javascript.
-
 //Validating First Name
 alert("This is just a practice javascript form.");
 
@@ -92,7 +82,7 @@ passwordValidation.addEventListener("input", function(){
     const passwordInput = passwordValidation.value.trim();
     const passwordError = document.getElementById('passwordError');
     const passwordMaxLength = 8;
-   
+
     // Reset all rules//  
     passwordError.style.display = "none";
     ruleLength.style.display = "block";
@@ -144,8 +134,6 @@ passwordValidation.addEventListener("input", function(){
         ruleSpecial.style.color = "green";
     }
 
-
-
 // Password Confirmation Validation
 confirmPassword.addEventListener("input", function (){
     console.log('The confirm password input event was triggered.');
@@ -153,8 +141,8 @@ confirmPassword.addEventListener("input", function (){
     const passwordValue = passwordInput.value; 
 
     if(!confirmPasswordValue){
-        confirmationError.style.display = "block"
-        confirmationError.textContent = "Cannot leave empty! Please re-enter your password!"
+        confirmationError.style.display = "block";
+        confirmationError.textContent = "Cannot leave empty! Please re-enter your password!";
         confirmPassword.style.color = "";
         return;
     } else if(confirmPasswordValue !== passwordInput){
@@ -175,7 +163,7 @@ form.addEventListener("submit", function(event){
     event.preventDefault();
     console.log("The form was submitted!");
 
-    alert("Your form was successfully saved! Thank you for your support!");
+    alert("Your form was successfully saved! Thank you for your support! :)");
 });
 
 
